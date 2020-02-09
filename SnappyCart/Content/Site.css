@@ -84,4 +84,6 @@ textarea {
     text-align: center;
     background-color: #666;
     border-radius: 0px 0px 4px 4px;
+    position:absolute;
+    bottom: 270px;
 }
