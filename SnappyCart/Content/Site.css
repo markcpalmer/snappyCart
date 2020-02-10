@@ -2,7 +2,15 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
-
+.navbar-collapse{
+    position:fixed;
+}
+.large-picture-div{
+    left: 0;
+    background-image:url(~/Content/Images/splash.jpg);
+    height:500px;
+}
+background-image
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
