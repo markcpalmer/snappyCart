@@ -4,7 +4,13 @@
 }
 .navbar-collapse{
     position:fixed;
+    
 }
+.navbar {
+    background-color: #ee7639;
+    
+}
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
