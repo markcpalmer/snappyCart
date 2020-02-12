@@ -2,11 +2,21 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
-
-
-background-image
+.navbar-collapse{
+    position:fixed;
+}
+.large-picture-div {
+    left: 0;
+    background-image: url("./Images/splash.jpg");
+    height: 500px;
+    
+}
 /* Set padding to keep content from hitting the edges */
-.
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
