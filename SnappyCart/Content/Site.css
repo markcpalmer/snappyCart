@@ -5,14 +5,10 @@
 .navbar-collapse{
     position:fixed;
 }
-.large-picture-div {
-    left: 0;
-    background-image: url("../Images/splash.jpg");
-    height: 500px;
-    
-}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin: 0px;
     padding-left: 15px;
     padding-right: 15px;
 }
