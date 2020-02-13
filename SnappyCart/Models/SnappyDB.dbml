@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="snappycartDb" Class="SnappyDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=LAPTOP-5P9JLMHT\SQLEXPRESS;Initial Catalog=snappycartDb;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="snappycartDbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.password" Member="passwords">
+    <Type Name="password">
+      <Column Name="passwordID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="password" Member="password1" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="user_password" Member="user" ThisKey="UserID" OtherKey="UserID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.products" Member="products">
+    <Type Name="product">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ProductDescription" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="ProductPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Association Name="product_userProduct" Member="userProducts" ThisKey="ProductID" OtherKey="ProductID" Type="userProduct" />
+    </Type>
+  </Table>
+  <Table Name="dbo.userProducts" Member="userProducts">
+    <Type Name="userProduct">
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="product_userProduct" Member="product" ThisKey="ProductID" OtherKey="ProductID" Type="product" IsForeignKey="true" />
+      <Association Name="user_userProduct" Member="user" ThisKey="UserID" OtherKey="UserID" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users" Member="users">
+    <Type Name="user">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="user_password" Member="passwords" ThisKey="UserID" OtherKey="UserID" Type="password" />
+      <Association Name="user_userProduct" Member="userProducts" ThisKey="UserID" OtherKey="UserID" Type="userProduct" />
+    </Type>
+  </Table>
+</Database>
