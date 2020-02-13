@@ -1,71 +1,83 @@
 ﻿@{
-    
+
         ViewBag.Title = "Login";
 
 }
 
 <!DOCTYPE html>
-<div class="row">
-    <h2 style="text-align:center">Login with Social Media or Manually</h2>
 
-    <div class="col">
-        <a href="#" class="fb btn">
-            <i class="fab fa-facebook fa-fw"></i>Facebook
-        </a>
-        <br />
-        <a href="#" class="twitter btn">
-            <i class="fab fa-twitter fa-fw" style="width: 38px"></i>Twitter
-        </a>
-        <br />
-        <a href="#" class="google btn">
-            <i class="fab fa-google fa-fw" style="width: 28px"></i>Google+
-        </a>
-    </div>
+<div class="container">
+    <div class="row">
+        <h2 style="text-align:center">Login with Social Media or Manually</h2>
 
-    @*<div class="vl">
+        <div class="col">
+            <a href="#" class="fb btn">
+                <i class="fab fa-facebook fa-fw"></i>Facebook
+            </a>
+            <br />
+            <a href="#" class="twitter btn">
+                <i class="fab fa-twitter fa-fw" style="width: 38px"></i>Twitter
+            </a>
+            <br />
+            <a href="#" class="google btn">
+                <i class="fab fa-google fa-fw" style="width: 28px"></i>Google+
+            </a>
+        </div>
+
+        @*<div class="vl">
             <span class="vl-innertext">or</span>
         </div>*@
 
-    <div style="border-left:1px solid #000;height:10px; align-content:center;"> OR </div>
+        <div style="border-left:1px solid #000;height:10px; align-content:center;"> OR </div>
 
-    <div class="col2">
-        <div class="hide-md-lg">
+        <div class="col2">
+            <div class="hide-md-lg">
 
+            </div>
+
+            <input type="text" name="username" placeholder="Username" required>
+            <br />
+            <input type="password" name="password" placeholder="Password" required>
+            <br />
+            <input type="submit" value="Login">
         </div>
-
-        <input type="text" name="username" placeholder="Username" required>
-        <br />
-        <input type="password" name="password" placeholder="Password" required>
-        <br />
-        <input type="submit" value="Login">
-    </div>
-</div>
-    <div class="bottom-container">
         <div class="row">
             <div class="col">
-                <a href="#" style="color:white" class="btn">Sign up</a>
+                <a href="#" class="btn">Sign up</a>
             </div>
             <div class="col">
-                <a href="#" style="color:white" class="btn">Forgot password?</a>
+                <a href="#" style="text-align:right" class="btn">Forgot password?</a>
             </div>
         </div>
+        @*<div class="bottom-container">
+            <div class="row">
+                <div class="col">
+                    <a href="#" style="color:white" class="btn">Sign up</a>
+                </div>
+                <div class="col">
+                    <a href="#" style="color:white" class="btn">Forgot password?</a>
+                </div>
+            </div>
+        </div>*@
     </div>
 
+</div>
 
 
 
 
-    @*<html>
-        <head>
-            <meta name="viewport" content="width=device-width" />
-            <title></title>
-        </head>
-        <body>
-            <div>
-                <h2>@ViewBag.Title.</h2>
-                <h3>@ViewBag.Message</h3>
-                <h1> put login row here</h1>
 
-            </div>
-        </body>
-        </html>*@
+@*<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title></title>
+    </head>
+    <body>
+        <div>
+            <h2>@ViewBag.Title.</h2>
+            <h3>@ViewBag.Message</h3>
+            <h1> put login row here</h1>
+
+        </div>
+    </body>
+    </html>*@
