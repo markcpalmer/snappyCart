@@ -101,3 +101,9 @@ textarea {
     bottom: 270px;
     width: 85%;
 }
+.register-form {
+    text-align: center;
+    align-content:center;
+    position: absolute;
+
+}
