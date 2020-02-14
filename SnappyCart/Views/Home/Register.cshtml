@@ -5,10 +5,16 @@
 
 <h2>Register</h2>
 <form action="/examples/actions/confirmation.php" method="post">
-   @Html.LabelFor(a => a.LastName)
+    @Html.LabelFor(a => a.LastName)
     @Html.TextBoxFor(a => a.LastName)
+    <br/>
+    @Html.LabelFor(a => a.FirstName)
     @Html.TextBoxFor(a => a.FirstName)
+    <br />
+    @Html.LabelFor(a => a.UserName)
     @Html.TextBoxFor(a => a.UserName)
+    <br />
+    @Html.LabelFor(a => a.Password)
     @Html.TextBoxFor(a => a.Password)
 </form>
 @*<div class="form-group">
