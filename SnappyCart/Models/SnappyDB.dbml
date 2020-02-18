@@ -10,7 +10,7 @@
   </Table>
   <Table Name="dbo.products" Member="products">
     <Type Name="product">
-      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ProductName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="ProductDescription" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
       <Column Name="ProductPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />

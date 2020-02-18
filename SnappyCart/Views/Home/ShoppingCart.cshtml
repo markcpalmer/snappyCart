@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<SnappyCart.Models.UserProducts>
+@model IEnumerable<SnappyCart.Models.userProduct>
 
 
 @{
@@ -18,7 +18,7 @@ else
 
         @foreach (var item in Model)
         {
-            @Html.DisplayTextFor(modelItem => item.productId)
+            @Html.DisplayTextFor(modelItem => item)
             <span>•</span>
         }
     </div>
