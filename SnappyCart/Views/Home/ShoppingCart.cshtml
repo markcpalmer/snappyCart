@@ -1,5 +1,5 @@
-﻿@model  SnappyCart.Models.UserProducts
-@*@model IEnumerable<SnappyCart.Models.UserProducts>*@
+﻿
+@model IEnumerable<SnappyCart.Models.UserProducts>
 
 
 @{
@@ -7,18 +7,25 @@
 }
 
 <h2>ShoppingCart</h2>
- 
-     @*@if (Model.count() == 0)
-     {
- <div> Your cart is empty</div>
-         }*@
-     
 
-@*<div>
+@if (Model == null)
+{
+    <div> Your cart is empty</div>
+}
+else
+{
+    <div>
 
         @foreach (var item in Model)
         {
             @Html.DisplayTextFor(modelItem => item.productId)
             <span>•</span>
         }
-    </div>*@
+    </div>
+
+
+
+}
+
+
+
