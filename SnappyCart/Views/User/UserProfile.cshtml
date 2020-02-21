@@ -1,7 +1,9 @@
-﻿
+﻿@Model SnappyCart.Models.Users
 @{
     ViewBag.Title = "index";
 }
+
+
 
 <h2>index User Profile</h2>
 
@@ -14,10 +16,15 @@
      change password and confirm password
 
 *@
-<h4> User Name: </h4>
-<br />
-<h4> First Name: </h4>
-<br />
-<h4> UserID: </h4>
+<div class="container">
+    <div class="userProfile">
+        @Html.LabelFor(a => a.LastName)
+        @Html.TextBoxFor(a => a.LastName)
 
- 
+        h4> User Name: </h4>
+        <br />
+        <h4> First Name: </h4>
+        <br />
+        <h4> UserID: </h4>
+    </div>
+</div>

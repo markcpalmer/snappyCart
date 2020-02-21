@@ -104,6 +104,26 @@ textarea {
 .register-form {
     text-align: center;
     align-content:center;
-    position: absolute;
 
+}
+
+.container {
+    padding-bottom: 50px;
+    width: calc(100% - 20px);
+}
+.userProfile {
+    width: 340px;
+    margin: auto;
+    text-align: center;
+}
+label {
+    width: 70px;
+}
+
+footer {
+    position: absolute;
+    height: 50px;
+    width: calc(100% - 20px);
+    bottom: 0px;
+    text-align: center;
 }
