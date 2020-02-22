@@ -1,4 +1,4 @@
-﻿@Model SnappyCart.Models.Users
+﻿@model SnappyCart.Models.Users
 @{
     ViewBag.Title = "index";
 }
@@ -18,13 +18,14 @@
 *@
 <div class="container">
     <div class="userProfile">
-        @Html.LabelFor(a => a.LastName)
-        @Html.TextBoxFor(a => a.LastName)
-
-        h4> User Name: </h4>
-        <br />
-        <h4> First Name: </h4>
-        <br />
-        <h4> UserID: </h4>
+        <form action="/examples/actions/confirmation.php" method="post">
+            @Html.LabelFor(a => a.UserName)
+            @Html.TextBoxFor(a => a.UserName)
+            <br />
+            @Html.LabelFor(a=> a.FirstName)
+            <br />
+            @Html.LabelFor(a=> a.LastName)
+            
+        </form>
     </div>
 </div>
