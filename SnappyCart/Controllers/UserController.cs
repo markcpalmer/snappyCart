@@ -33,7 +33,7 @@ namespace SnappyCart.Controllers
             }
             else
             {
-                var getResults = U.Users.Where(Users => User.UserId == ID).ToList();
+                var getResults = Dc.users.Where(Users => Users.UserID == ID).ToList();
                 foreach (var item in getResults)
                 {
                     getUsers.Add(item);
