@@ -21,6 +21,7 @@
         <form action="/examples/actions/confirmation.php" method="post">
             @Html.LabelFor(a => a.UserName)
             @Html.TextBoxFor(a => a.UserName)
+            @Html.DisplayText( Model.UserName)
             <br />
             @Html.LabelFor(a=> a.FirstName)
             <br />
