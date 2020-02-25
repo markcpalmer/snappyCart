@@ -5,14 +5,12 @@ using System.Web;
 
 namespace SnappyCart.Models
 {
-    public class Users
+    public class UserModel
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Password { get; set; }
-
-
     }
 }

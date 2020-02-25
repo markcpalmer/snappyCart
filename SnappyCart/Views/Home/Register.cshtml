@@ -1,4 +1,4 @@
-﻿@model  SnappyCart.Models.Users
+﻿@model  SnappyCart.Models.UserModel
 @{
     ViewBag.Title = "Register";
 }
@@ -83,7 +83,7 @@
                 @Html.TextBoxFor(a => a.UserName)
                 <br />
                 @Html.LabelFor(a => a.Password)
-                @Html.TextBoxFor(a => a.Password)
+                @Html.PasswordFor(a => a.Password)
 
                 <input type="submit" value="Submit" />
             }

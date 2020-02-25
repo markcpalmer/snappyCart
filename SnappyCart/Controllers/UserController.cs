@@ -10,7 +10,7 @@ namespace SnappyCart.Controllers
     public class UserController : Controller
     {
         SnappyDBDataContext Dc = new SnappyDBDataContext();
-        Users U = new Users();
+        UserModel U = new UserModel();
 
         // GET: User
         [HttpGet]
@@ -37,18 +37,40 @@ namespace SnappyCart.Controllers
             }
         }
 
-        public ActionResult Register(Users RegisteredUser)
-        {
-            user ord = new user
+        public ActionResult Register(UserModel RegisteredUser) 
+        {            
+            //Comparison to see if the user exists
+            user doesUserExists = new user();
+            doesUserExists = Dc.users
+                .Where(exists => exists.UserName == RegisteredUser.UserName)
+                .SingleOrDefault();
+
+            if(doesUserExists != null)
             {
-                UserName = RegisteredUser.UserName,
-                FirstName = RegisteredUser.FirstName,
-                LastName = RegisteredUser.LastName
-            };
+                //Error Message - User Exists
+                //Typically if an item exists, you do an update here (just not for register page)
+            }
+            else
+            {
+                //Add new user and password
+                user newUser = new user
+                {
+                    UserName = RegisteredUser.UserName,
+                    FirstName = RegisteredUser.FirstName,
+                    LastName = RegisteredUser.LastName
+                };
 
-            Dc.users.InsertOnSubmit(ord);
+                password newPass = new password
+                {
+                    password1 = RegisteredUser.Password,
+                    UserID = RegisteredUser.UserId
+                };
 
-            Dc.SubmitChanges();
+                Dc.users.InsertOnSubmit(newUser);
+                Dc.passwords.InsertOnSubmit(newPass);
+                Dc.SubmitChanges();
+            }
+
             return View();
         }
 

@@ -127,14 +127,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProductTable.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\SnappyDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SnappyDB.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserProductTable.cs" />
-    <Compile Include="Models\UserTable.cs" />
+    <Compile Include="Models\UserProductModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
