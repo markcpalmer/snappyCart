@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using SnappyCart.Models;
 
-
 namespace SnappyCart.Controllers
 {
     public class UserController : Controller
@@ -14,14 +13,10 @@ namespace SnappyCart.Controllers
         Users U = new Users();
 
         // GET: User
-        public ActionResult UserProfile()
-        {
-            return View();
-        }
-
+        [HttpGet]
         public ActionResult UserProfile(int? ID) //Nullable Int Type 
         {
-            List<Users> getUsers = new List<Users>();
+            List<user> getUsers = new List<user>();
 
             /// get int ID 
             /// look at db to see if user id exists, if exists grab all related data
@@ -33,7 +28,7 @@ namespace SnappyCart.Controllers
             }
             else
             {
-                var getResults = Dc.users.Where(user => Dc.users.UserId == ID).ToList();
+                var getResults = Dc.users.Where(user => user.UserID == ID).ToList();
                 foreach (var item in getResults)
                 {
                     getUsers.Add(item);
@@ -41,5 +36,21 @@ namespace SnappyCart.Controllers
                 return View(getUsers);
             }
         }
+
+        public ActionResult Register(Users RegisteredUser)
+        {
+            user ord = new user
+            {
+                UserName = RegisteredUser.UserName,
+                FirstName = RegisteredUser.FirstName,
+                LastName = RegisteredUser.LastName
+            };
+
+            Dc.users.InsertOnSubmit(ord);
+
+            Dc.SubmitChanges();
+            return View();
+        }
+
     }
 }
