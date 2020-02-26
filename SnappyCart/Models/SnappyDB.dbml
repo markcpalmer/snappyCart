@@ -36,4 +36,11 @@
       <Association Name="user_userProduct" Member="userProducts" ThisKey="UserID" OtherKey="UserID" Type="userProduct" />
     </Type>
   </Table>
+  <Function Name="dbo.insertregistereduser" Method="insertregistereduser">
+    <Parameter Name="username" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="password" Type="System.String" DbType="VarChar(16)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

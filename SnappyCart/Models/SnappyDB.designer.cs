@@ -102,6 +102,13 @@ namespace SnappyCart.Models
 				return this.GetTable<user>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.insertregistereduser")]
+		public int insertregistereduser([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastName", DbType="VarChar(255)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FirstName", DbType="VarChar(255)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(16)")] string password)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), username, lastName, firstName, password);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.password")]

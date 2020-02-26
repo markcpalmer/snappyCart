@@ -49,29 +49,18 @@ namespace SnappyCart.Controllers
             {
                 //Error Message - User Exists
                 //Typically if an item exists, you do an update here (just not for register page)
+                
+                ModelState.AddModelError("error", "User already exists");
+                return View(RegisteredUser);
             }
             else
             {
-                //Add new user and password
-                user newUser = new user
-                {
-                    UserName = RegisteredUser.UserName,
-                    FirstName = RegisteredUser.FirstName,
-                    LastName = RegisteredUser.LastName
-                };
+                
+                Dc.insertregistereduser(RegisteredUser.UserName, RegisteredUser.LastName, RegisteredUser.FirstName, RegisteredUser.Password);
+                return RedirectToAction("Login", "Home");
 
-                password newPass = new password
-                {
-                    password1 = RegisteredUser.Password,
-                    UserID = RegisteredUser.UserId
-                };
-
-                Dc.users.InsertOnSubmit(newUser);
-                Dc.passwords.InsertOnSubmit(newPass);
-                Dc.SubmitChanges();
             }
 
-            return View();
         }
 
     }

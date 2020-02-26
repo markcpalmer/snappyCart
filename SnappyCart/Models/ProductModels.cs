@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SnappyCart.Models
 {
-    public class ProductModel
+    public class ProductModels
     {
         public int productId { get; set; }
         public string productName { get; set; }
