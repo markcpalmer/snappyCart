@@ -24,7 +24,7 @@ namespace SnappyCart.Controllers
             /// display list
             if (ID == null)
             {
-                return View();
+                return View(); // returns a view but which one?  how does it know the right view to choose
             }
             else
             {
