@@ -40,7 +40,7 @@ namespace SnappyCart.Controllers
                 //    getUsersCart.Add(item);
                 //}
                 // run the sp to get back the contents of the items a user has ordered
-                getUsersCart=Dc.selectUserProductDetails( RegisteredUser.UserID);
+                getUsersCart = Dc.selectUserProductDetails( RegisteredUser.UserID);
                // return RedirectToAction("ShoppingCart", "ShoppingController");
 
                 //Dc.selectUserProductDetails(UserName, RegisteredUser.LastName, RegisteredUser.FirstName, RegisteredUser.Password);
