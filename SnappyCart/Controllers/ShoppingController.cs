@@ -20,7 +20,7 @@ namespace SnappyCart.Controllers
         }
 
         [HttpGet]
-        public ActionResult ShoppingCart(int? ID) //Nullable Int Type 
+        public ActionResult ShoppingCart(int? ID, userProduct RegisteredUser) //Nullable Int Type 
         {
             List<userProduct> getUsersCart = new List<userProduct>();
 
@@ -34,11 +34,17 @@ namespace SnappyCart.Controllers
             }
             else
             {
-                var getResults = Dc.userProducts.Where(cart => cart.UserID == ID).ToList();
-                foreach (var item in getResults)
-                {
-                    getUsersCart.Add(item);
-                }
+                //var getResults = Dc.userProducts.Where(cart => cart.UserID == ID).ToList();
+                //foreach (var item in getResults)
+                //{
+                //    getUsersCart.Add(item);
+                //}
+
+                Dc.selectUserProductDetails( RegisteredUser.UserID);
+
+                //Dc.selectUserProductDetails(UserName, RegisteredUser.LastName, RegisteredUser.FirstName, RegisteredUser.Password);
+                //return RedirectToAction("Login", "Home");
+                //return View(getUsersCart);
                 return View(getUsersCart);
             }
         }

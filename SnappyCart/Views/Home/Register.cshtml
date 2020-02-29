@@ -5,7 +5,7 @@
 
 <style type="text/css">
     .register-form {
-        width: 340px;
+        width: 640px;
         margin: auto;
         text-align: center;
     }
@@ -71,23 +71,27 @@
 <div class="container">
     <div class="register-form">
         <h2> Register</h2>
-        @using(Html.BeginForm("Register","User",FormMethod.Post))  // how does it know this is the usercontroller since it says user? Is it because of the @model statment at the top?
-            {
-                @Html.LabelFor(a => a.LastName)
-                @Html.TextBoxFor(a => a.LastName)
-                <br />
-                @Html.LabelFor(a => a.FirstName)
-                @Html.TextBoxFor(a => a.FirstName)
-                <br />
-                @Html.LabelFor(a => a.UserName)
-                @Html.TextBoxFor(a => a.UserName)
-                <br />
-                @Html.LabelFor(a => a.Password)
-                @Html.PasswordFor(a => a.Password)
+        @using (Html.BeginForm("Register", "User", FormMethod.Post))  // how does it know this is the usercontroller since it says user? Is it because of the @model statment at the top?
+        {
+    
+        @Html.LabelFor(a => a.LastName)
+        @Html.TextBoxFor(a => a.LastName, new { @class = "form-control",@style="display:inline-block" })
+    
+            //<input type="text" class="form-control" placeholder="Text input">
 
-                <input type="submit" value="Submit" />
-                @Html.ValidationSummary()
-            }
+            <br />
+            @Html.LabelFor(a => a.FirstName)
+            @Html.TextBoxFor(a => a.FirstName)
+            <br />
+            @Html.LabelFor(a => a.UserName)
+            @Html.TextBoxFor(a => a.UserName)
+            <br />
+            @Html.LabelFor(a => a.Password)
+            @Html.PasswordFor(a => a.Password)
+
+            <input type="submit" value="Submit" />
+            @Html.ValidationSummary()
+        }
     </div>
 </div>
 
