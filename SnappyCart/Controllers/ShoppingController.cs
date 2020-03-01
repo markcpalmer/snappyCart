@@ -40,13 +40,13 @@ namespace SnappyCart.Controllers
                 //    getUsersCart.Add(item);
                 //}
                 // run the sp to get back the contents of the items a user has ordered
-                getUsersCart = Dc.selectUserProductDetails( RegisteredUser.UserID);
+                var results = Dc.selectUserProductDetails(RegisteredUser.UserID).ToList();
                // return RedirectToAction("ShoppingCart", "ShoppingController");
 
                 //Dc.selectUserProductDetails(UserName, RegisteredUser.LastName, RegisteredUser.FirstName, RegisteredUser.Password);
                 //return RedirectToAction("Login", "Home");
                 //return View(getUsersCart);
-                return View(getUsersCart);
+                return View(results);
             }
         }
     }
