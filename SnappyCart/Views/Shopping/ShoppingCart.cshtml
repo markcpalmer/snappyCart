@@ -15,16 +15,17 @@
 else
 {
     
-    <div>
-        <table class="table">
+<div>
+    @*UserID,b.ProductID,OrderDate,ProductName, ProductDescription, ProductPrice*@
+    <table class="table">
 
-            @foreach (var item in Model)
-            {
-                @Html.DisplayTextFor(modelItem => item)
-                <span>•</span>
-            }
-        </table>
-    </div>
+        @foreach (var item in Model)
+        {
+            @Html.DisplayTextFor(modelItem => item)
+            <span>•</span>
+        }
+    </table>
+</div>
     <div>
 
     </div>
