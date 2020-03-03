@@ -19,33 +19,23 @@ namespace SnappyCart.Controllers
             return View();
         }
 
+        /// get int ID 
+        /// look at db to see if user id exists, if exists grab all related data
+        /// store each record of data into the list
+        /// display list
         [HttpGet]
-        public ActionResult ShoppingCart(int? ID, userProduct RegisteredUser) //Nullable Int Type 
+        public ActionResult ShoppingCart(int? ID) //Nullable Int Type 
         {
-            List<userProduct> getUsersCart = new List<userProduct>();
+            // run the sp to get back the contents of the items a user has ordered
+            //assign results the database selectuserproduct details sp sending it an ID it gets returned a list
+            var results = Dc.selectUserProductDetails(ID).ToList();
 
-            /// get int ID 
-            /// look at db to see if user id exists, if exists grab all related data
-            /// store each record of data into the list
-            /// display list
-            if (ID == null)
+            if (ID == null || results.Count == 0)
             {
                 return View();
             }
             else
-            {
-                //var getResults = Dc.userProducts.Where(cart => cart.UserID == ID).ToList();
-                //foreach (var item in getResults)
-                //{
-                //    getUsersCart.Add(item);
-                //}
-                // run the sp to get back the contents of the items a user has ordered
-                var results = Dc.selectUserProductDetails(RegisteredUser.UserID).ToList();
-               // return RedirectToAction("ShoppingCart", "ShoppingController");
-
-                //Dc.selectUserProductDetails(UserName, RegisteredUser.LastName, RegisteredUser.FirstName, RegisteredUser.Password);
-                //return RedirectToAction("Login", "Home");
-                //return View(getUsersCart);
+            {                
                 return View(results);
             }
         }

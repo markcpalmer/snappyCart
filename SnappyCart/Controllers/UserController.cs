@@ -28,6 +28,8 @@ namespace SnappyCart.Controllers
             }
             else
             {
+                //TODO: Replace these 5 lines with one line of code
+                //Use a SP.
                 var getResults = Dc.users.Where(user => user.UserID == ID).ToList();
                 foreach (var item in getResults)
                 {
@@ -37,6 +39,7 @@ namespace SnappyCart.Controllers
             }
         }
 
+        # region Register
         public ActionResult Register(UserModel RegisteredUser) 
         {            
             //Comparison to see if the user exists
@@ -61,6 +64,23 @@ namespace SnappyCart.Controllers
 
             }
 
+        }
+        #endregion
+
+        public ActionResult Login(UserModel Login) //Nullable Int Type 
+        {
+            var userExists = Dc.users.Where(a=> a.UserName==Login.UserName).FirstOrDefault();//defaults to null and doesn't error out
+
+            if (userExists != null)
+            {
+                return RedirectToAction("ShoppingCart", "Shopping", new { ID = userExists.UserID});//redirects user to different action"
+            }
+            else
+            {
+                return View();
+            }
+
+            
         }
 
     }
