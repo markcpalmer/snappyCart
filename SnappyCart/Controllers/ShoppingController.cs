@@ -29,6 +29,8 @@ namespace SnappyCart.Controllers
             // run the sp to get back the contents of the items a user has ordered
             //assign results the database selectuserproduct details sp sending it an ID it gets returned a list
             var results = Dc.selectUserProductDetails(ID).ToList();
+           
+            //if the ID is null or the table results is empty return the cart is empty message? why if the id is null do we want that message returned?
 
             if (ID == null || results.Count == 0)
             {

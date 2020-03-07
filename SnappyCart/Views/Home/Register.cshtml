@@ -81,13 +81,14 @@
 
             <br />
             @Html.LabelFor(a => a.FirstName)
-            @Html.TextBoxFor(a => a.FirstName)
+            @Html.TextBoxFor(a => a.FirstName, new {@class = "form-control",@style="display:inline-block"})
             <br />
             @Html.LabelFor(a => a.UserName)
-            @Html.TextBoxFor(a => a.UserName)
+            @Html.TextBoxFor(a => a.UserName, new {@class = "form-control",@style="display:inline-block"})
             <br />
             @Html.LabelFor(a => a.Password)
-            @Html.PasswordFor(a => a.Password)
+            @Html.PasswordFor(a => a.Password, new {@class = "form-control",@style="display:inline-block"})
+            <br />
 
             <input type="submit" value="Submit" />
             @Html.ValidationSummary()
