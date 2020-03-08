@@ -73,22 +73,23 @@
         <h2> Register</h2>
         @using (Html.BeginForm("Register", "User", FormMethod.Post))  // how does it know this is the usercontroller since it says user? Is it because of the @model statment at the top?
         {
-    
-        @Html.LabelFor(a => a.LastName)
-        @Html.TextBoxFor(a => a.LastName, new { @class = "form-control",@style="display:inline-block" })
-    
+
+            @Html.LabelFor(a => a.LastName)
+            @Html.TextBoxFor(a => a.LastName, new { @class = "form-control", @style = "display:inline-block" })
+
             //<input type="text" class="form-control" placeholder="Text input">
 
             <br />
             @Html.LabelFor(a => a.FirstName)
-            
-            @Html.TextBoxFor(a => a.FirstName, new {@class = "form-control",@style="display:inline-block"})
+
+            @Html.TextBoxFor(a => a.FirstName, new { @class = "form-control", @style = "display:inline-block" })
             <br />
             @Html.LabelFor(a => a.UserName)
-            @Html.TextBoxFor(a => a.UserName, new {@class = "form-control",@style="display:inline-block"})
+            @Html.LabelFor(a => a.UserName, "", new { @class = "is-invalid" })
+            @Html.TextBoxFor(a => a.UserName, new { @class = "form-control", @style = "display:inline-block" })
             <br />
             @Html.LabelFor(a => a.Password)
-            @Html.PasswordFor(a => a.Password, new {@class = "form-control",@style="display:inline-block"})
+            @Html.PasswordFor(a => a.Password, new { @class = "form-control", @style = "display:inline-block" })
             <br />
 
             <input type="submit" value="Submit" />
