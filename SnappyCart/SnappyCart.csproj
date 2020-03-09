@@ -184,7 +184,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Shopping\ShoppingCart.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
   </ItemGroup>
