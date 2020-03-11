@@ -40,6 +40,13 @@ namespace SnappyCart.Controllers
         }
 
         # region Register
+        public ActionResult Register()
+        {
+            ViewBag.Message = "Registration Page";
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Register(UserModel RegisteredUser) 
         {            
             //Comparison to see if the user exists

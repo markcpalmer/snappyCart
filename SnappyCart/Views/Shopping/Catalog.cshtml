@@ -1,0 +1,24 @@
+﻿@model IEnumerable<SnappyCart.Models.product>
+
+    @{
+    ViewBag.Title = "Catalog";
+    }
+
+    <h2>Catalog</h2>
+
+        @foreach(var item in Model)
+        {
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-sm">
+                              <!--Div for left side-->
+                              @item.ProductName
+                              <!--Div for right side-->
+                              @item.ProductPrice
+                              <!-- Div center-->
+                              @item.ProductDescription
+
+                          </div>
+                      </div>
+                  </div>
+        }

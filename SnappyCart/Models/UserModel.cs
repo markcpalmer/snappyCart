@@ -8,14 +8,19 @@ namespace SnappyCart.Models
 {
     public class UserModel
     {
-        [Required]
         public int UserId { get; set; }
-        [Required]
-        [DataType(DataType.EmailAddress)]
+
+        [Required (ErrorMessage ="Email required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Last Name Required")]
         public string LastName { get; set; }
+
+        [Required(ErrorMessage = "First Name Required")]
         public string FirstName { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Password Required")]
         public string Password { get; set; }
     }
 }
