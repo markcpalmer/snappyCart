@@ -188,7 +188,6 @@
     <Content Include="Views\Shopping\ShoppingCart.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\Shopping\Catalog.cshtml" />
-    <Content Include="Views\Home\Catalog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
