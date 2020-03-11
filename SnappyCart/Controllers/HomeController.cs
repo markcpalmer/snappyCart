@@ -32,5 +32,10 @@ namespace SnappyCart.Controllers
            return View();
             
         }       
+        public ActionResult Catalog()
+        {
+            ViewBag.Message = "Catalog Page";
+                return View();
+        }
     }
 }
