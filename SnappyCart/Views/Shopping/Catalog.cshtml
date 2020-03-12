@@ -6,23 +6,23 @@
 
     <h2>Catalog</h2>
         
-       <label> Product Name</label>
-        <label> Product Price</label>
-        <label>Product Description</label>
+       <label class="col-lg-2"> Product Name</label>
+        <label class="col-lg-2"> Product Price</label>
+        <label class="col-lg-2">Product Description</label>
         
-
+        <br />
         @foreach(var item in Model)
         {
                   <div class="container">
                       <div class="row">
                           <div class="col-sm">
 
-                              <div class="col-lg-1">
+                              <div class="col-lg-2">
                                   <!--Div for left side-->
 
                                   @item.ProductName
                               </div>
-                              <div class="col-lg-1">
+                              <div class="col-lg-2">
                                   <!--Div for right side-->
                                   @item.ProductPrice
                               </div>
