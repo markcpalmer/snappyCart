@@ -5,18 +5,33 @@
     }
 
     <h2>Catalog</h2>
+        
+       <label> Product Name</label>
+        <label> Product Price</label>
+        <label>Product Description</label>
+        
 
         @foreach(var item in Model)
         {
                   <div class="container">
                       <div class="row">
                           <div class="col-sm">
-                              <!--Div for left side-->
-                              @item.ProductName
-                              <!--Div for right side-->
-                              @item.ProductPrice
-                              <!-- Div center-->
-                              @item.ProductDescription
+
+                              <div class="col-lg-1">
+                                  <!--Div for left side-->
+
+                                  @item.ProductName
+                              </div>
+                              <div class="col-lg-1">
+                                  <!--Div for right side-->
+                                  @item.ProductPrice
+                              </div>
+                              
+                              <div>
+                                  <!-- Div center-->
+
+                                  @item.ProductDescription
+                              </div>
 
                           </div>
                       </div>
