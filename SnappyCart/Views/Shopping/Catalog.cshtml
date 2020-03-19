@@ -5,35 +5,36 @@
     }
 
     <h2>Catalog</h2>
-        
-       <label class="col-md-4 col-sm-3"> Product Name</label>
+
+    @*<label class="col-md-4 col-sm-3"> Product Name</label>
         <label class="col-md-4 col-sm-3"> Product Price</label>
-        <label class="col-md-4 col-sm-3">Product Description</label>
-        
-        <br />
-        @foreach(var item in Model)
+        <label class="col-md-4 col-sm-3">Product Description</label>*@
+
+    @foreach(var item in Model)
         {
-                  <div class="container">
-                      <div class="row table-bordered">
-                          <div class="col-sm col-md4">
-
-                              <div class="col-md-4">
-                                  <!--Div for left side-->
-
-                                  @item.ProductName
-                              </div>
-                              <div class="col-md-4">
-                                  <!--Div for right side-->
-                                  @item.ProductPrice
-                              </div>
-                              
-                              <div class="col-md-4">
-                                  <!-- Div center-->
-
-                                  @item.ProductDescription
-                              </div>
-
-                          </div>
-                      </div>
-                  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm col-md-4">
+                <div class="col-md-4">
+                    IMAGE
+                </div>
+                <div class="col-md-4">
+                    <b>@item.ProductName</b>
+                    <br />
+                    @item.ProductDescription
+                </div>
+                <div class="col-md-4">
+                    @item.ProductPrice
+                </div>
+                @Html.ActionLink("add to cart","AddToShoppingCart","Shopping",item.ProductID, "")
+                    @*AddToCart(this.value)*@                    
+            </div>
+        </div>
+    </div>
         }
+<script type="text/javascript">
+    function AddToCart(productID)
+    {
+        
+    }
+</script>

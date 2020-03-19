@@ -46,5 +46,18 @@ namespace SnappyCart.Controllers
                 return View(results);
             }
         }
+        public ActionResult AddToShoppingCart(int? ID)
+        {
+            //Add ID into ShoppngCart
+            UserModel getUser = new UserModel();
+            int userExists = getUser.UserId;
+            userProduct newItem = new userProduct();
+            /*{
+
+            }*/
+
+
+            return View();
+        }
     }
 }
