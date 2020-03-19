@@ -21,6 +21,7 @@ namespace SnappyCart.Controllers
 
         public ActionResult Catalog()
         {
+            UserModel getUser = (UserModel)(Session["SnappyUser"]);
             var catalog = Dc.products.ToList();
             return View(catalog);
         }
@@ -48,10 +49,15 @@ namespace SnappyCart.Controllers
         }
         public ActionResult AddToShoppingCart(int? ID)
         {
+            //Get User Session
+            UserModel getUser = (UserModel)(Session["SnappyUser"]);
+
             //Add ID into ShoppngCart
-            UserModel getUser = new UserModel();
-            int userExists = getUser.UserId;
-            userProduct newItem = new userProduct();
+            var results = Dc.userProducts.Where(a => a.UserID == ID);
+
+            //INsertOnSubmit into the UserProduct for UserID
+
+
             /*{
 
             }*/

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using SnappyCart.Models;
 
 namespace SnappyCart.Controllers
 {
@@ -28,14 +30,50 @@ namespace SnappyCart.Controllers
         }
         public ActionResult Login()
         {
-           ViewBag.Message = "Login Page";
-           return View();
-            
-        }       
+            ViewBag.Message = "Login Page";
+
+            UserModel Login = new UserModel();
+
+            try
+            {
+                if (Request.Cookies["SnappyUser"] != null)
+                {
+                    Login.UserName = Request.Cookies["SnappyUser"].Values["UserName"];
+                    Login.Password = Request.Cookies["SnappyUser"].Values["Password"];
+
+                    Login = Login.GetUser(Login, true);
+                    if (Login != null)
+                    {
+                        PrepareUserSession(Login);
+                        FormsAuthentication.SetAuthCookie(Login.UserName, true);
+                        //return RedirectToAction("ShoppingCart", "Shopping", new { ID = userExists.UserID });//redirects user to different action"
+                    }
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch { }
+            return View();
+        }
+
         public ActionResult Catalog()
         {
             ViewBag.Message = "Catalog Page";
-                return View();
+            return View();
+        }
+
+        public void PrepareUserSession(UserModel model)
+        {
+            Session["SnappyUser"] = new UserModel()
+            {
+                UserName = model.UserName,
+                Password = model.Password
+            };
+
+            UserModel usermng = (UserModel)(Session["SnappyUser"]);
+
         }
     }
 }
