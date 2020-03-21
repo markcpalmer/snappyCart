@@ -56,6 +56,9 @@ namespace SnappyCart.Controllers
             var results = Dc.userProducts.Where(a => a.UserID == ID);
 
             //INsertOnSubmit into the UserProduct for UserID
+            // insert on submit the product id that the user clicked.
+            Dc.userProducts.InsertOnSubmit(ID);
+
 
 
             /*{
