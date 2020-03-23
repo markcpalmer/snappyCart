@@ -38,6 +38,7 @@ namespace SnappyCart.Controllers
             {
                 if (Request.Cookies["SnappyUser"] != null)
                 {
+                    Login.UserId = Int32.Parse(Request.Cookies["SnappyUser"].Values["UserID"]);
                     Login.UserName = Request.Cookies["SnappyUser"].Values["UserName"];
                     Login.Password = Request.Cookies["SnappyUser"].Values["Password"];
 
@@ -68,6 +69,7 @@ namespace SnappyCart.Controllers
         {
             Session["SnappyUser"] = new UserModel()
             {
+                UserId = model.UserId,
                 UserName = model.UserName,
                 Password = model.Password
             };

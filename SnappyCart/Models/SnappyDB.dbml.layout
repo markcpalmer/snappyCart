@@ -14,19 +14,6 @@
         <elementListCompartment Id="98a7016f-3458-43a5-af09-7c6a5984f48d" absoluteBounds="4.765, 6.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="926758df-de53-4629-bf03-d65988df82d8" absoluteBounds="7.125, 5.125, 2, 1.3862939453125">
-      <DataClassMoniker Name="/SnappyDBDataContext/userProduct" />
-      <nestedChildShapes>
-        <elementListCompartment Id="3023c4a7-093c-479a-822f-68ac820f59e5" absoluteBounds="7.14, 5.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(6.75 : 6.06814697265625); (7.125 : 6.06814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SnappyDBDataContext/product/product_userProduct" />
-      <nodes>
-        <classShapeMoniker Id="5edad64b-c7e7-4c93-91cb-bdb96d39f0cc" />
-        <classShapeMoniker Id="926758df-de53-4629-bf03-d65988df82d8" />
-      </nodes>
-    </associationConnector>
     <classShape Id="9441835c-2873-466a-9e05-cc344ae56cdb" absoluteBounds="1.5, 3.5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/SnappyDBDataContext/user" />
       <nestedChildShapes>
@@ -40,11 +27,24 @@
         <classShapeMoniker Id="b4f93003-7c29-4333-ad9f-b12cb5421590" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.5 : 5.07859537760417); (2.5 : 5.34375); (7.125 : 5.34375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <classShape Id="d1de5639-7376-41ed-93f9-9600ab85d070" absoluteBounds="1.25, 6.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SnappyDBDataContext/userProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b315812e-1272-411b-bae9-0a283fe68c91" absoluteBounds="1.2649999999999997, 6.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.75 : 6.66429768880208); (3.25 : 6.66429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SnappyDBDataContext/product/product_userProduct" />
+      <nodes>
+        <classShapeMoniker Id="5edad64b-c7e7-4c93-91cb-bdb96d39f0cc" />
+        <classShapeMoniker Id="d1de5639-7376-41ed-93f9-9600ab85d070" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.375 : 5.07859537760417); (2.375 : 6.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/SnappyDBDataContext/user/user_userProduct" />
       <nodes>
         <classShapeMoniker Id="9441835c-2873-466a-9e05-cc344ae56cdb" />
-        <classShapeMoniker Id="926758df-de53-4629-bf03-d65988df82d8" />
+        <classShapeMoniker Id="d1de5639-7376-41ed-93f9-9600ab85d070" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

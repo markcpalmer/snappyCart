@@ -49,24 +49,25 @@ namespace SnappyCart.Controllers
         }
         public ActionResult AddToShoppingCart(int? ID)
         {
-            //Get User Session
-            UserModel getUser = (UserModel)(Session["SnappyUser"]);
+            //Get User Session (Does not contain UserID)
+            UserModel getUser = (UserModel)(Session["SnappyUser"]); 
 
-            //Add ID into ShoppngCart
-            var results = Dc.userProducts.Where(a => a.UserID == ID);
+            // Gets User's info based on the Session
+            var results = Dc.users.Where(a => a.UserName == getUser.UserName).SingleOrDefault();
 
             //INsertOnSubmit into the UserProduct for UserID
             // insert on submit the product id that the user clicked.
-            Dc.userProducts.InsertOnSubmit(ID);
+            userProduct addItem = new userProduct
+            {
+                UserID = results.UserID,
+                ProductID = ID,
+                OrderDate = DateTime.Now
+            };
 
+            Dc.userProducts.InsertOnSubmit(addItem); //Inserts into the database
+            Dc.SubmitChanges(); // Updates the database depending on the values
 
-
-            /*{
-
-            }*/
-
-
-            return View();
+            return RedirectToAction("ShoppingCart", "Shopping",new {ID=results.UserID });
         }
     }
 }

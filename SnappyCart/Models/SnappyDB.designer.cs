@@ -39,6 +39,9 @@ namespace SnappyCart.Models
     partial void Insertuser(user instance);
     partial void Updateuser(user instance);
     partial void Deleteuser(user instance);
+    partial void InsertuserProduct(userProduct instance);
+    partial void UpdateuserProduct(userProduct instance);
+    partial void DeleteuserProduct(userProduct instance);
     #endregion
 		
 		public SnappyDBDataContext() : 
@@ -87,19 +90,19 @@ namespace SnappyCart.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<userProduct> userProducts
-		{
-			get
-			{
-				return this.GetTable<userProduct>();
-			}
-		}
-		
 		public System.Data.Linq.Table<user> users
 		{
 			get
 			{
 				return this.GetTable<user>();
+			}
+		}
+		
+		public System.Data.Linq.Table<userProduct> userProducts
+		{
+			get
+			{
+				return this.GetTable<userProduct>();
 			}
 		}
 		
@@ -283,6 +286,8 @@ namespace SnappyCart.Models
 		
 		private System.Nullable<decimal> _ProductPrice;
 		
+		private EntitySet<userProduct> _userProducts;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -299,6 +304,7 @@ namespace SnappyCart.Models
 		
 		public product()
 		{
+			this._userProducts = new EntitySet<userProduct>(new Action<userProduct>(this.attach_userProducts), new Action<userProduct>(this.detach_userProducts));
 			OnCreated();
 		}
 		
@@ -382,6 +388,19 @@ namespace SnappyCart.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_userProduct", Storage="_userProducts", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<userProduct> userProducts
+		{
+			get
+			{
+				return this._userProducts;
+			}
+			set
+			{
+				this._userProducts.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -401,68 +420,17 @@ namespace SnappyCart.Models
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.userProducts")]
-	public partial class userProduct
-	{
 		
-		private System.Nullable<int> _UserID;
-		
-		private System.Nullable<int> _ProductID;
-		
-		private System.Nullable<System.DateTime> _OrderDate;
-		
-		public userProduct()
+		private void attach_userProducts(userProduct entity)
 		{
+			this.SendPropertyChanging();
+			entity.product = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
-		public System.Nullable<int> UserID
+		private void detach_userProducts(userProduct entity)
 		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this._UserID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int")]
-		public System.Nullable<int> ProductID
-		{
-			get
-			{
-				return this._ProductID;
-			}
-			set
-			{
-				if ((this._ProductID != value))
-				{
-					this._ProductID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> OrderDate
-		{
-			get
-			{
-				return this._OrderDate;
-			}
-			set
-			{
-				if ((this._OrderDate != value))
-				{
-					this._OrderDate = value;
-				}
-			}
+			this.SendPropertyChanging();
+			entity.product = null;
 		}
 	}
 	
@@ -482,6 +450,8 @@ namespace SnappyCart.Models
 		
 		private EntitySet<password> _passwords;
 		
+		private EntitySet<userProduct> _userProducts;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -499,6 +469,7 @@ namespace SnappyCart.Models
 		public user()
 		{
 			this._passwords = new EntitySet<password>(new Action<password>(this.attach_passwords), new Action<password>(this.detach_passwords));
+			this._userProducts = new EntitySet<userProduct>(new Action<userProduct>(this.attach_userProducts), new Action<userProduct>(this.detach_userProducts));
 			OnCreated();
 		}
 		
@@ -595,6 +566,19 @@ namespace SnappyCart.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_userProduct", Storage="_userProducts", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<userProduct> userProducts
+		{
+			get
+			{
+				return this._userProducts;
+			}
+			set
+			{
+				this._userProducts.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -625,6 +609,234 @@ namespace SnappyCart.Models
 		{
 			this.SendPropertyChanging();
 			entity.user = null;
+		}
+		
+		private void attach_userProducts(userProduct entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_userProducts(userProduct entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.userProducts")]
+	public partial class userProduct : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Nullable<int> _UserID;
+		
+		private System.Nullable<int> _ProductID;
+		
+		private System.Nullable<System.DateTime> _OrderDate;
+		
+		private int _ID;
+		
+		private EntityRef<product> _product;
+		
+		private EntityRef<user> _user;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    partial void OnProductIDChanging(System.Nullable<int> value);
+    partial void OnProductIDChanged();
+    partial void OnOrderDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOrderDateChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    #endregion
+		
+		public userProduct()
+		{
+			this._product = default(EntityRef<product>);
+			this._user = default(EntityRef<user>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductID", DbType="Int")]
+		public System.Nullable<int> ProductID
+		{
+			get
+			{
+				return this._ProductID;
+			}
+			set
+			{
+				if ((this._ProductID != value))
+				{
+					if (this._product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProductIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProductID = value;
+					this.SendPropertyChanged("ProductID");
+					this.OnProductIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> OrderDate
+		{
+			get
+			{
+				return this._OrderDate;
+			}
+			set
+			{
+				if ((this._OrderDate != value))
+				{
+					this.OnOrderDateChanging(value);
+					this.SendPropertyChanging();
+					this._OrderDate = value;
+					this.SendPropertyChanged("OrderDate");
+					this.OnOrderDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_userProduct", Storage="_product", ThisKey="ProductID", OtherKey="ProductID", IsForeignKey=true)]
+		public product product
+		{
+			get
+			{
+				return this._product.Entity;
+			}
+			set
+			{
+				product previousValue = this._product.Entity;
+				if (((previousValue != value) 
+							|| (this._product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._product.Entity = null;
+						previousValue.userProducts.Remove(this);
+					}
+					this._product.Entity = value;
+					if ((value != null))
+					{
+						value.userProducts.Add(this);
+						this._ProductID = value.ProductID;
+					}
+					else
+					{
+						this._ProductID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("product");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_userProduct", Storage="_user", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+		public user user
+		{
+			get
+			{
+				return this._user.Entity;
+			}
+			set
+			{
+				user previousValue = this._user.Entity;
+				if (((previousValue != value) 
+							|| (this._user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user.Entity = null;
+						previousValue.userProducts.Remove(this);
+					}
+					this._user.Entity = value;
+					if ((value != null))
+					{
+						value.userProducts.Add(this);
+						this._UserID = value.UserID;
+					}
+					else
+					{
+						this._UserID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("user");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

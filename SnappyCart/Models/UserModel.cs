@@ -40,8 +40,9 @@ namespace SnappyCart.Models
             
             // Determine if user exists
             try
-            {                
-                user = Dc.users.Single(a => a.UserName == logon.UserName);
+            {   
+                user = Dc.users.Single(a => a.UserName == logon.UserName); //Gets UserName and Password
+                
             }
             catch
             {

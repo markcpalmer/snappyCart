@@ -26,7 +26,7 @@
                 <div class="col-md-4">
                     @item.ProductPrice
                 </div>
-                @Html.ActionLink("add to cart","AddToShoppingCart","Shopping",item.ProductID, "")
+                @Html.ActionLink("add to cart","AddToShoppingCart","Shopping", new { ID = item.ProductID}, "")
                     @*AddToCart(this.value)*@                    
             </div>
         </div>

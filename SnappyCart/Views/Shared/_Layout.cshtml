@@ -47,17 +47,43 @@
             </div>
 
             <div class="loginButton">
-                @Html.ActionLink("Login", "Login", "Home", false, new { style="position:absolute; right:10px; top:10px;"})
+                @if (Page.User.Identity.request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Login", "Login", "Home", false, new { style = "position:absolute; right:10px; top:10px; display: none;" })
+                    @Html.ActionLink("Logoff", "Logoff", "Home", false, new { style = "position: absolute; right:10px; top:10px;" })
+
+                }
+                else
+                {
+                    @Html.ActionLink("Login", "Login", "Home", false, new { style = "position:absolute; right:10px; top:10px; " })
+
+                }
+
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
+    </div>
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="row">
+                <div class="col-md-2"; style="left: 20px; text-align: left; background-color: red;">
+                    <ul>
+
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+                <br />
+
+                <div class="copyright-div">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </div>
+           
         </footer>
-    </div>
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

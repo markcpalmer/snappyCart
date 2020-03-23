@@ -120,12 +120,21 @@ label {
     width: 70px;
 }
 
-footer {
+.footer-col {
+    position:relative;
+    height: 50px;
+    left: 0px;
+    
+}
+.copyright-div {
     position: absolute;
     height: 50px;
     width: calc(100% - 20px);
     bottom: 0px;
     text-align: center;
+}
+.footer-div{
+
 }
 /* For medium screen */
 @media (min-width: 768px) {
