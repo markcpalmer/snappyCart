@@ -139,10 +139,10 @@ label {
 /* For medium screen */
 @media (min-width: 768px) {
     .row  {
-        background: #dcdcdc;
+        background: none;
     }
 
-    .row :nth-child(4n-2), .row :nth-child(4n-3) {
-        background: #aaaaaa;
-    }
+        .row :nth-child(4n-2), .row :nth-child(4n-3) {
+            background: none;
+        }
 }

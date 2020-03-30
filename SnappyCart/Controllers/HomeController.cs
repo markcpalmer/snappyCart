@@ -10,9 +10,13 @@ namespace SnappyCart.Controllers
 {
     public class HomeController : Controller
     {
+        SnappyDBDataContext Dc = new SnappyDBDataContext();
+
         public ActionResult Index()
         {
-            return View();
+            UserModel getUser = (UserModel)(Session["SnappyUser"]);
+            var catalog = Dc.products.ToList();
+            return View(catalog);
         }
 
         public ActionResult About()
@@ -56,12 +60,6 @@ namespace SnappyCart.Controllers
                 }
             }
             catch { }
-            return View();
-        }
-
-        public ActionResult Catalog()
-        {
-            ViewBag.Message = "Catalog Page";
             return View();
         }
 

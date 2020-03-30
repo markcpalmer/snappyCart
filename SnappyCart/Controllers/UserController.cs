@@ -121,6 +121,12 @@ namespace SnappyCart.Controllers
             /// AUTHENTICATION.  the website knows who the user is at all times
             UserModel usermng = (UserModel)(Session["SnappyUser"]);
         }
+        public ActionResult Logoff()
+        {
+            FormsAuthentication.SignOut();            
+            Session["SnappyUser"] = null;//Clear cookie
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }

@@ -19,12 +19,7 @@ namespace SnappyCart.Controllers
             return View();
         }
 
-        public ActionResult Catalog()
-        {
-            UserModel getUser = (UserModel)(Session["SnappyUser"]);
-            var catalog = Dc.products.ToList();
-            return View(catalog);
-        }
+        
         /// get int ID 
         /// look at db to see if user id exists, if exists grab all related data
         /// store each record of data into the list

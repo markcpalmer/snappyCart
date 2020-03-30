@@ -34,29 +34,23 @@
 
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-
-                    <li>@Html.ActionLink("Catalog", "Catalog", "Shopping")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
             </div>
             <div class="row">
                 <a href="/Shopping/ShoppingCart">
-                    <i class='fas fa-shopping-cart' style='font-size:24px; position: absolute; right: 90px; top: 10px; color: red'></i>
+                    <i class='fas fa-shopping-cart' style='font-size:24px; position: absolute; right: 90px; top: 10px; color: red; background-color:#ee7639'></i>
                 </a>
             </div>
 
             <div class="loginButton">
-                @if (Page.User.Identity.request.IsAuthenticated)
+                @* turn on login button if user is null turn it off if user is not null *@
+                @if(Session["SnappyUser"] == null)
                 {
-                    @Html.ActionLink("Login", "Login", "Home", false, new { style = "position:absolute; right:10px; top:10px; display: none;" })
-                    @Html.ActionLink("Logoff", "Logoff", "Home", false, new { style = "position: absolute; right:10px; top:10px;" })
-
+                    @Html.ActionLink("Login", "Login", "Home", false, new { style = "position:absolute; right:10px; top:10px;" })
                 }
                 else
                 {
-                    @Html.ActionLink("Login", "Login", "Home", false, new { style = "position:absolute; right:10px; top:10px; " })
-
+                    @Html.ActionLink("Sign Out", "Logoff", "User", false, new { style = "position: absolute; right:10px; top:10px;" })
                 }
 
             </div>
@@ -66,22 +60,20 @@
         @RenderBody()
     </div>
         <hr />
-        <footer>
-            <div class="row">
-                <div class="col-md-2"; style="left: 20px; text-align: left; background-color: red;">
+        <footer style="margin-top:-93px">
+                <div style="left: 20px; text-align: left; background-color: #ee7639;">
                     <ul>
 
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>
                 </div>
-            </div>
-                <br />
 
-                <div class="copyright-div">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                </div>
-           
+            <br />
+
+            <div class="row" style="text-align:center">
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </div>            
         </footer>
     
 
