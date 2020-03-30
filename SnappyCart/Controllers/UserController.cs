@@ -86,8 +86,7 @@ namespace SnappyCart.Controllers
                     //FormsAuthentication common Windows/Microsoft Method. This tells your server to whitelist the cookie.
                     FormsAuthentication.SetAuthCookie(Login.UserName, true); //True is for Remember ME
                     PrepareUserSession(Login);
-                    //turn login button off turn log off button on
-                    //ChangeLoginButton();
+                    
                     return RedirectToAction("ShoppingCart", "Shopping", new { ID = userExists.UserID });//redirects user to different action"                    
                 }
                 catch { }
@@ -101,11 +100,7 @@ namespace SnappyCart.Controllers
 
 
         }
-        public void ChangeLoginButton()
-        {
-            
-
-        }
+        
         public void PrepareUserSession(UserModel model)
         {
             // Assigning variables from the model parameter into the Session
